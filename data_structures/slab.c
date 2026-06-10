@@ -75,8 +75,13 @@ void freeSlab(Slab *slab) {
 
 #define pushSlabStr(slab, str) (char*)(pushSlab(slab, str, 1, strlen(str)+1))
 
+// Set to a value reasonable for the workload (512, 4096, 65536, etc.)
+// Using 1 in this example to verify reallocation works as expected
+#define DEFAULT_SLAP_SIZE 1
+
 int main() {
-  Slab slab = newSlab(1);
+  
+  Slab slab = newSlab(1); 
   char *name = "Bob";
   char *age  = "45";
   char *sex  = "M";
